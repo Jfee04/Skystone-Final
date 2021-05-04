@@ -33,10 +33,10 @@ public class TeleOpTest extends OpMode {
     public void loop() {
 
         if(gamepad1.left_stick_x > 0.3 || gamepad1.left_stick_x < -0.3 ||gamepad1.left_stick_y > 0.3 || gamepad1.left_stick_y < -0.3) {
-            FrontLeft.setPower(-gamepad1.left_stick_y - -gamepad1.left_stick_x);
-            FrontRight.setPower(-gamepad1.left_stick_y + -gamepad1.left_stick_x);
-            BackLeft.setPower(-gamepad1.left_stick_y + -gamepad1.left_stick_x);
-            BackRight.setPower(-gamepad1.left_stick_y - -gamepad1.left_stick_x);
+            FrontLeft.setPower(gamepad1.left_stick_y/2 + gamepad1.left_stick_x/2);
+            FrontRight.setPower(gamepad1.left_stick_y/2 - gamepad1.left_stick_x/2);
+            BackLeft.setPower(gamepad1.left_stick_y/2 - gamepad1.left_stick_x/2);
+            BackRight.setPower(gamepad1.left_stick_y/2 + gamepad1.left_stick_x/2);
         }
         else {
             FrontLeft.setPower(0);
@@ -44,6 +44,9 @@ public class TeleOpTest extends OpMode {
             BackLeft.setPower(0);
             BackRight.setPower(0);
         }
+
+        if(gamepad1.right_stick_x > .5 || gamepad1.right_stick_y > .5 )
+
 
         //test
 
