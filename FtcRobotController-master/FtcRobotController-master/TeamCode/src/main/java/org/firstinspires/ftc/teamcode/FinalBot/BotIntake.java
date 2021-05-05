@@ -22,8 +22,8 @@ public class BotIntake {
         motors[1] = intakeRight;
         this.finger = finger;
 
-        motors[0].setPower(0);
-        motors[1].setPower(0);
+        motors[0].setPower(0);//left motor
+        motors[1].setPower(0);//right motor
     }
 
     public startIntake(){
@@ -43,5 +43,5 @@ public class BotIntake {
     public void openFinger(){
 
     }
-    
+
 }
