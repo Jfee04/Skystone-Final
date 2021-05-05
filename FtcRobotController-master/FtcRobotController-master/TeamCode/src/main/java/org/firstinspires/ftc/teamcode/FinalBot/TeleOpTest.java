@@ -31,21 +31,31 @@ public class TeleOpTest extends OpMode {
 
     @Override
     public void loop() {
+            //if(gamepad1.right_stick_x  < -.3 || gamepad1.right_stick_x > .3){
 
-        if(gamepad1.left_stick_x > 0.3 || gamepad1.left_stick_x < -0.3 ||gamepad1.left_stick_y > 0.3 || gamepad1.left_stick_y < -0.3) {
-            FrontLeft.setPower(gamepad1.left_stick_y/2 + gamepad1.left_stick_x/2);
-            FrontRight.setPower(gamepad1.left_stick_y/2 - gamepad1.left_stick_x/2);
-            BackLeft.setPower(gamepad1.left_stick_y/2 - gamepad1.left_stick_x/2);
-            BackRight.setPower(gamepad1.left_stick_y/2 + gamepad1.left_stick_x/2);
-        }
-        else {
-            FrontLeft.setPower(0);
-            FrontRight.setPower(0);
-            BackLeft.setPower(0);
-            BackRight.setPower(0);
+            if (gamepad1.left_stick_x > 0.3 || gamepad1.left_stick_x < -0.3 || gamepad1.left_stick_y > 0.3 || gamepad1.left_stick_y < -0.3) {
+                FrontLeft.setPower(gamepad1.left_stick_y + gamepad1.left_stick_x);
+                FrontRight.setPower(-(gamepad1.left_stick_y - gamepad1.left_stick_x));
+                BackLeft.setPower(gamepad1.left_stick_y - gamepad1.left_stick_x);
+                BackRight.setPower(-(gamepad1.left_stick_y + gamepad1.left_stick_x));
+            }// normal movement forward Backward and diagnal
+            else if (gamepad1.left_trigger > .1) {
+                FrontLeft.setPower(-gamepad1.left_trigger);
+                FrontRight.setPower(-(gamepad1.left_trigger));
+                BackLeft.setPower(-gamepad1.left_trigger);
+                BackRight.setPower(-(gamepad1.left_trigger));
+            } else if (gamepad1.right_trigger > .1) {
+                FrontLeft.setPower(gamepad1.right_trigger);
+                FrontRight.setPower(-(-gamepad1.right_trigger));
+                BackLeft.setPower(gamepad1.right_trigger);
+                BackRight.setPower(-(-gamepad1.right_trigger));
+            }
+
         }
 
-        if(gamepad1.right_stick_x > .5 || gamepad1.right_stick_y > .5 )
+
+
+        //if(gamepad1.right_stick_x > .5 || gamepad1.right_stick_y > .5 )
 
 
         //test
@@ -83,5 +93,5 @@ public class TeleOpTest extends OpMode {
         //telemetry.addData("Color: ", colorSensor.getClass());
         */
     }
-}
+
 
