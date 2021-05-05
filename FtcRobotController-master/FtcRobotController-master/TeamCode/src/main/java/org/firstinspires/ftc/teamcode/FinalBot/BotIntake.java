@@ -45,7 +45,7 @@ public class BotIntake {
 
         finger.setPower(1);//move towards intake
 
-        time.reset();
+        time.reset();//reset time
 
         while(time.seconds() < 1);//waits 1 second for finger to close
         finger.setPower(0);
@@ -57,7 +57,7 @@ public class BotIntake {
 
         finger.setPower(-1);//move away from intake
 
-        time.reset();
+        time.reset();//reset time
 
         while(time.seconds() < 1);//waits 1 second for finger to open
         finger.setPower(0);
