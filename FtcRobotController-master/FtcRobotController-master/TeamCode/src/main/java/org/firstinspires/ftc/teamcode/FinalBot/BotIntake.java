@@ -63,6 +63,6 @@ public class BotIntake {
         finger.setPower(0);
 
         fingerOpen = true;
-    }//rgbregb
+    }
 
 }
