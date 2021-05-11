@@ -39,7 +39,7 @@ public class TeleOpTest extends OpMode {
                 FrontRight.setPower(-(gamepad1.left_stick_y - gamepad1.left_stick_x));
                 BackLeft.setPower(gamepad1.left_stick_y - gamepad1.left_stick_x);
                 BackRight.setPower(-(gamepad1.left_stick_y + gamepad1.left_stick_x));
-            }// normal movement forward Backward and diagnal
+            }// normal movement forward Backward and diagonal
             else if (gamepad1.left_trigger > .1) {
                 FrontLeft.setPower(-gamepad1.left_trigger);
                 FrontRight.setPower(-(gamepad1.left_trigger));
@@ -50,6 +50,12 @@ public class TeleOpTest extends OpMode {
                 FrontRight.setPower(-(-gamepad1.right_trigger));
                 BackLeft.setPower(gamepad1.right_trigger);
                 BackRight.setPower(-(-gamepad1.right_trigger));
+            }
+            else{
+                FrontLeft.setPower(0);
+                FrontRight.setPower(0);
+                BackLeft.setPower(0);
+                BackRight.setPower(0);
             }
 
         }
