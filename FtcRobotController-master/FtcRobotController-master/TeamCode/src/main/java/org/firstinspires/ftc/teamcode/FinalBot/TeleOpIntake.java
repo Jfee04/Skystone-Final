@@ -14,11 +14,11 @@ import java.util.List;
 @TeleOp(name="VeljkoTeleOp")
 public class TeleOpIntake extends OpMode {
 
-    BotIntake intake = new BotIntake(hardwareMap.get(DcMotor.class, "intakeLeft"), hardwareMap.get(DcMotor.class, "intakeRight"), hardwareMap.get(CRServo.class, "finger"));
+    BotIntake intake; //new BotIntake(hardwareMap.get(DcMotor.class, "intakeLeft"), hardwareMap.get(DcMotor.class, "intakeRight"), hardwareMap.get(CRServo.class, "finger"));
     
     @Override
     public void init() {
-        
+        intake = new BotIntake(hardwareMap.get(DcMotor.class, "intakeLeft"), hardwareMap.get(DcMotor.class, "intakeRight"));
     }
 
     @Override

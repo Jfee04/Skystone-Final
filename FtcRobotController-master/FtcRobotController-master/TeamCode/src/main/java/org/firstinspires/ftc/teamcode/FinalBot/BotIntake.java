@@ -21,6 +21,11 @@ public class BotIntake {
         motors[1].setPower(0);//right motor
     }
 
+    public BotIntake(DcMotor intakeLeft, DcMotor intakeRight){
+        motors[0] = intakeLeft;
+        motors[1] = intakeRight;
+    }
+
     public void startIntake(){
 
         motors[0].setPower(1);
