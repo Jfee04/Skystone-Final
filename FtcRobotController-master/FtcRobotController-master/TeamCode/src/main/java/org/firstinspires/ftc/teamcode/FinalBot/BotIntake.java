@@ -19,12 +19,15 @@ public class BotIntake {
 
         motors[0].setPower(0);//left motor
         motors[1].setPower(0);//right motor
-    }
+
+        openFinger();
+
+    }//main constructor
 
     public BotIntake(DcMotor intakeLeft, DcMotor intakeRight){
         motors[0] = intakeLeft;
         motors[1] = intakeRight;
-    }
+    }//extra constructor without servo
 
     public void startIntake(){
 

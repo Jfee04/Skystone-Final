@@ -18,7 +18,7 @@ public class TeleOpIntake extends OpMode {
     
     @Override
     public void init() {
-        intake = new BotIntake(hardwareMap.get(DcMotor.class, "intakeLeft"), hardwareMap.get(DcMotor.class, "intakeRight"));
+        intake = new BotIntake(hardwareMap.get(DcMotor.class, "intakeLeft"), hardwareMap.get(DcMotor.class, "intakeRight"), hardwareMap.get(CRServo.class, "finger"));
     }
 
     @Override
@@ -29,6 +29,13 @@ public class TeleOpIntake extends OpMode {
         }
         else if(gamepad1.dpad_down){
             intake.stopIntake();
+        }//intake wheels start/stop
+
+        if(gamepad1.left_bumper){
+            intake.closeFinger();//towards intake
+        }
+        else if(gamepad1.right_bumper){
+            intake.openFinger();//away from intake
         }
     }
 
