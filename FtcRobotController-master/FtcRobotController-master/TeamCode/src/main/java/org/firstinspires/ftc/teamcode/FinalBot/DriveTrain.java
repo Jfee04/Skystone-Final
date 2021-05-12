@@ -2,11 +2,13 @@ package org.firstinspires.ftc.teamcode.FinalBot;
 
 import com.qualcomm.robotcore.hardware.DcMotor;
 
+import java.util.Arrays;
+
 import static org.firstinspires.ftc.robotcore.external.BlocksOpModeCompanion.hardwareMap;
 
 public class DriveTrain {
     private final DcMotor[] wheels = new DcMotor[4];
-    
+
     private final double TPR = 1120;
     private final double DGR = 1;
     private final double Diameter_Inches = 4.0;
@@ -28,11 +30,51 @@ public class DriveTrain {
         wheels[3] = i3;
     }
 
+    //Getter
+    ////////////////////////////////////////////////////////////////
+
+    public DcMotor[] getWheels() {
+        return wheels;
+    }
+
+    public double getTPR() {
+        return TPR;
+    }
+
+    public double getDGR() {
+        return DGR;
+    }
+
+    public double getDiameter_Inches() {
+        return Diameter_Inches;
+    }
+
+    public double getCPI() {
+        return CPI;
+    }
+
+    public double getCPR() {
+        return CPR;
+    }
+
+    public double getCPD() {
+        return CPD;
+    }
+
+
+
+    //Setter
+    ////////////////////////////////////////////////////////////////
+
     public void setMode(DcMotor.RunMode mode){
         for(DcMotor m:wheels){
             m.setMode(mode);
         }//sets runmode of all motors
     }//sets mode of all the motors to mode
+
+    public void setMode(int wheel, DcMotor.RunMode mode){
+            wheels[wheel].setMode(mode);
+    }//sets mode of wheel motor to mode
 
     public void setPower(int power){
         for (int i = 0; i < 4; i++) {
@@ -45,6 +87,24 @@ public class DriveTrain {
         }
     }
 
-    
+    public void setPower(int i, int power){
+        if (i==1 || i==3){
+            wheels[i].setPower(-power);
+        }
+        else{
+            wheels[i].setPower(power);
+        }
+    }
+
+    public void rotateClockWise(int degrees, int power){
+        for (int i = 0; i < 4; i++) {
+            if(i == 0 || i == 2){
+                setPower(i,1);
+            }else
+                setPower(i,1);
+
+        }
+    }
+
 
 }
