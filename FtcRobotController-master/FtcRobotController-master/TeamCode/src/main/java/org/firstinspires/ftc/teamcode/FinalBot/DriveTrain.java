@@ -6,10 +6,13 @@ import static org.firstinspires.ftc.robotcore.external.BlocksOpModeCompanion.har
 
 public class DriveTrain {
     private final DcMotor[] wheels = new DcMotor[4];
+    
     private final double TPR = 1120;
     private final double DGR = 1;
     private final double Diameter_Inches = 4.0;
     private final double CPI = (TPR * DGR) / (Diameter_Inches * Math.PI);
+    private final double CPR = 7200;
+    private final double CPD = CPR/360;
 
 
     public DriveTrain(){

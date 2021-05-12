@@ -41,6 +41,15 @@ public class TeleOpTest extends OpMode {
         //if (gamepad1.left_stick_x > 0.3 || gamepad1.left_stick_x < -0.3 || gamepad1.left_stick_y > 0.3 || gamepad1.left_stick_y < -0.3) {}
         telemetry.addData("Ticks", FrontLeft.getCurrentPosition());
         telemetry.update();
+        if(gamepad1.a) {
+            FrontLeft.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+            try {
+                wait(10);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            FrontLeft.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        }
 
             if (gamepad1.left_stick_x > 0.3 || gamepad1.left_stick_x < -0.3 || gamepad1.left_stick_y > 0.3 || gamepad1.left_stick_y < -0.3) {
                 FrontLeft.setPower(gamepad1.left_stick_y + gamepad1.left_stick_x);
