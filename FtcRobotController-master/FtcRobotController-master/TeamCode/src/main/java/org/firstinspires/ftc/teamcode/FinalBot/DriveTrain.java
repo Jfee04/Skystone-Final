@@ -6,12 +6,23 @@ import static org.firstinspires.ftc.robotcore.external.BlocksOpModeCompanion.har
 
 public class DriveTrain {
     private final DcMotor[] wheels = new DcMotor[4];
+    private final double TPR = 1120;
+    private final double DGR = 1;
+    private final double Diameter_Inches = 4.0;
+    private final double CPI = (TPR * DGR) / (Diameter_Inches * Math.PI);
+
 
     public DriveTrain(){
         wheels[0] = hardwareMap.get(DcMotor.class, "frontLeft");
         wheels[1] = hardwareMap.get(DcMotor.class, "frontRight");
         wheels[2] = hardwareMap.get(DcMotor.class, "backLeft");
         wheels[3] = hardwareMap.get(DcMotor.class, "backRight");
+    }
+    public DriveTrain(DcMotor i0, DcMotor i1, DcMotor i2, DcMotor i3){
+        wheels[0] = i0;
+        wheels[1] = i1;
+        wheels[2] = i2;
+        wheels[3] = i3;
     }
 
     public void setMode(DcMotor.RunMode mode){

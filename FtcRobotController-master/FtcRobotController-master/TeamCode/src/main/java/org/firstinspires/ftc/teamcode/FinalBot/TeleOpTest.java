@@ -5,6 +5,8 @@ import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.ColorSensor;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DistanceSensor;
+
+import org.firstinspires.ftc.robotcore.external.Telemetry;
 import org.firstinspires.ftc.teamcode.FinalBot.DriveTrain;
 
 import org.firstinspires.ftc.robotcore.external.navigation.DistanceUnit;
@@ -18,6 +20,7 @@ public class TeleOpTest extends OpMode {
     //public DistanceSensor distanceSensorForward;
     //public ColorSensor colorSensor;
 
+
     @Override
     public void init() {
 
@@ -26,6 +29,7 @@ public class TeleOpTest extends OpMode {
         BackLeft = hardwareMap.get(DcMotor.class, "backLeft");
         BackRight = hardwareMap.get(DcMotor.class, "backRight");
 
+
         //distanceSensorForward = hardwareMap.get(DistanceSensor.class, "front_distance");
         //colorSensor = hardwareMap.get(ColorSensor.class, "color_sensor");
     }
@@ -33,6 +37,10 @@ public class TeleOpTest extends OpMode {
     @Override
     public void loop() {
             //if(gamepad1.right_stick_x  < -.3 || gamepad1.right_stick_x > .3){
+
+        //if (gamepad1.left_stick_x > 0.3 || gamepad1.left_stick_x < -0.3 || gamepad1.left_stick_y > 0.3 || gamepad1.left_stick_y < -0.3) {}
+        telemetry.addData("Ticks", FrontLeft.getCurrentPosition());
+        telemetry.update();
 
             if (gamepad1.left_stick_x > 0.3 || gamepad1.left_stick_x < -0.3 || gamepad1.left_stick_y > 0.3 || gamepad1.left_stick_y < -0.3) {
                 FrontLeft.setPower(gamepad1.left_stick_y + gamepad1.left_stick_x);
@@ -57,6 +65,7 @@ public class TeleOpTest extends OpMode {
                 BackLeft.setPower(0);
                 BackRight.setPower(0);
             }
+
 
         }
 
