@@ -17,6 +17,7 @@ import java.util.List;
 public class TeleOpTest extends OpMode {
 
     private DcMotor FrontLeft, FrontRight, BackLeft, BackRight;
+    DriveTrain wheels;
     //public DistanceSensor distanceSensorForward;
     //public ColorSensor colorSensor;
 
@@ -28,6 +29,9 @@ public class TeleOpTest extends OpMode {
         FrontRight = hardwareMap.get(DcMotor.class, "frontRight");
         BackLeft = hardwareMap.get(DcMotor.class, "backLeft");
         BackRight = hardwareMap.get(DcMotor.class, "backRight");
+
+
+        wheels = new DriveTrain(FrontLeft, FrontRight, BackLeft, BackRight);
 
 
         //distanceSensorForward = hardwareMap.get(DistanceSensor.class, "front_distance");
@@ -50,6 +54,38 @@ public class TeleOpTest extends OpMode {
             }
             FrontLeft.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         }
+
+        if (gamepad1.left_stick_x > 0.3 || gamepad1.left_stick_x < -0.3 || gamepad1.left_stick_y > 0.3 || gamepad1.left_stick_y < -0.3) {
+            wheels.setPower(0, (int) -(gamepad1.left_stick_y - gamepad1.left_stick_x));
+            wheels.setPower(1, (int) (gamepad1.left_stick_y + gamepad1.left_stick_x));
+            wheels.setPower(2, (int) -(gamepad1.left_stick_y + gamepad1.left_stick_x));
+            wheels.setPower(3, (int) (gamepad1.left_stick_y - gamepad1.left_stick_x));
+        }
+        else if (gamepad1.left_trigger > .1) {
+            wheels.setPower(0, (int) -(-gamepad1.left_trigger));
+            wheels.setPower(1, (int) (gamepad1.left_trigger));
+            wheels.setPower(2, (int) -(-gamepad1.left_trigger));
+            wheels.setPower(3, (int) (gamepad1.left_trigger));
+        }
+        else if (gamepad1.right_trigger > .1) {
+            wheels.setPower(0, (int) -(gamepad1.right_trigger));
+            wheels.setPower(1, (int) (-gamepad1.right_trigger));
+            wheels.setPower(2, (int) -(gamepad1.right_trigger));
+            wheels.setPower(3, (int) (-gamepad1.right_trigger));
+        }
+        else{
+            FrontLeft.setPower(0);
+            FrontRight.setPower(0);
+            BackLeft.setPower(0);
+            BackRight.setPower(0);
+        }
+
+
+/*
+
+
+
+
 
             if (gamepad1.left_stick_x > 0.3 || gamepad1.left_stick_x < -0.3 || gamepad1.left_stick_y > 0.3 || gamepad1.left_stick_y < -0.3) {
                 FrontLeft.setPower(gamepad1.left_stick_y + gamepad1.left_stick_x);
@@ -75,6 +111,8 @@ public class TeleOpTest extends OpMode {
                 BackRight.setPower(0);
             }
 
+
+ */
 
         }
 

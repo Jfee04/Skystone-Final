@@ -7,7 +7,8 @@ import java.util.Arrays;
 import static org.firstinspires.ftc.robotcore.external.BlocksOpModeCompanion.hardwareMap;
 
 public class DriveTrain {
-    private final DcMotor[] wheels = new DcMotor[4];
+
+    public final DcMotor[] wheels = new DcMotor[4];
 
     private final double TPR = 1120;
     private final double DGR = 1;
@@ -78,22 +79,22 @@ public class DriveTrain {
 
     public void setPower(int power){
         for (int i = 0; i < 4; i++) {
-            if (i==1 || i==3){
-                wheels[i].setPower(-power);
-            }
-            else{
+            //if (i==1 || i==3){
                 wheels[i].setPower(power);
-            }
+            //}
+            //else{
+                //wheels[i].setPower(-power);
+            //}
         }
     }
 
     public void setPower(int i, int power){
-        if (i==1 || i==3){
-            wheels[i].setPower(-power);
-        }
-        else{
+       //if (i==1 || i==3){
             wheels[i].setPower(power);
-        }
+        //}
+        //else{
+            //wheels[i].setPower(-power);
+        //}
     }
 
     public void rotateClockWise(int degrees, int power){
