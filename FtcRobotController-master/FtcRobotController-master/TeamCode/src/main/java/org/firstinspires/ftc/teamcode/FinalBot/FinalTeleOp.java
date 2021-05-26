@@ -15,13 +15,15 @@ import java.util.List;
 public class FinalTeleOp extends OpMode{
 
     FinalBot bot;
+    BotIntake intake;
+    BotHook hook;
 
     @Override
     public void init() {
 
         bot = new FinalBot(hardwareMap);
-        BotIntake intake = bot.intake;
-        BotHook hook = bot.hook;
+        intake = bot.intake;
+        hook = bot.hook;
     }
 
     //intake = new BotIntake(hardwareMap.get(DcMotor.class, "intakeLeft"), hardwareMap.get(DcMotor.class, "intakeRight"), hardwareMap.get(CRServo.class, "finger"));
